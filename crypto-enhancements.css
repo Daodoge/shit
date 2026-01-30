@@ -1,0 +1,82 @@
+/* Additional Crypto Enhancements */
+.solana-address {
+    font-family: 'Courier New', monospace;
+    background: linear-gradient(145deg, var(--bg-primary), #1a1a2e);
+    color: var(--crypto-green);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: 1.1rem;
+    word-break: break-all;
+    max-width: 100%;
+    overflow-x: auto;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: visible;
+}
+
+.solana-address::before {
+    content: '💰';
+    position: absolute;
+    left: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.solana-address:hover {
+    border-color: var(--crypto-green);
+    box-shadow: 0 0 15px rgba(0, 255, 157, 0.4);
+    text-shadow: 0 0 5px rgba(0, 255, 157, 0.8);
+    transition: all 0.3s ease;
+}
+
+.community-link,
+.dexscreener-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-family: 'Courier New', monospace;
+    background: linear-gradient(145deg, var(--bg-primary), #1a1a2e);
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: 1rem;
+    word-break: break-all;
+    max-width: 100%;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.community-link:hover,
+.dexscreener-link:hover {
+    border-color: var(--accent);
+    background: linear-gradient(145deg, #1a1a2e, var(--bg-primary));
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+    text-shadow: 0 0 5px rgba(0, 240, 255, 0.8);
+    transform: translateY(-2px);
+}
+
+/* Animated background for the body */
+body {
+    background: var(--bg-primary);
+    background-image: radial-gradient(rgba(0, 240, 255, 0.1) 1px, transparent 0), 
+                      radial-gradient(rgba(0, 255, 157, 0.1) 1px, transparent 0);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
+    animation: bgAnimation 20s ease infinite;
+}
+
+@keyframes bgAnimation {
+    0% { background-position: 0 0, 25px 25px; }
+    50% { background-position: 25px 25px, 50px 50px; }
+    100% { background-position: 0 0, 25px 25px; }
+}
+
+/* Glowing effects for interactive elements */
+button, input, select {
+    outline: none;
+    transition: box-shadow 0.3s ease;
+}
+
+button:focus, input:focus, select:focus {
+    box-shadow: 0 0 10px var(--accent-glow);
+}
