@@ -1,0 +1,22 @@
+{
+  "name": "solana-contact-website",
+  "version": "1.0.0",
+  "description": "A dark mode website featuring Solana contact information and Dexscreener integration",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve ./",
+    "start": "npx serve ./",
+    "build": "echo 'Build completed'"
+  },
+  "keywords": [
+    "solana",
+    "cryptocurrency",
+    "dark-mode",
+    "contact",
+    "dexscreener"
+  ],
+  "author": "Solana Contact",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}
