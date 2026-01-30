@@ -2,7 +2,7 @@
 async function fetchDexscreenerData() {
     try {
         // Fetch data from our API route
-        const response = await fetch('/api/price');
+        const response = await fetch('/api/dexscreener');
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -12,12 +12,23 @@ async function fetchDexscreenerData() {
         
         const priceElement = document.getElementById('price-value');
         if (priceElement) {
-            priceElement.innerHTML = `
-                <span class="price-amount">$${parseFloat(data.price).toFixed(8)}</span>
-                <div class="price-change ${data.priceChangePercentage >= 0 ? 'positive' : 'negative'}">
-                    ${data.priceChangePercentage >= 0 ? '↑' : '↓'} ${Math.abs(data.priceChangePercentage)}% (24h)
-                </div>
-            `;
+            // Check if there's an error in the response and show appropriate message
+            if (data.error) {
+                priceElement.innerHTML = `
+                    <span class="price-amount">$${parseFloat(data.price).toFixed(8)}</span>
+                    <div class="price-change ${data.priceChangePercentage >= 0 ? 'positive' : 'negative'}">
+                        ${data.priceChangePercentage >= 0 ? '↑' : '↓'} ${Math.abs(data.priceChangePercentage)}% (24h)
+                    </div>
+                    <div class="api-warning">${data.error}</div>
+                `;
+            } else {
+                priceElement.innerHTML = `
+                    <span class="price-amount">$${parseFloat(data.price).toFixed(8)}</span>
+                    <div class="price-change ${data.priceChangePercentage >= 0 ? 'positive' : 'negative'}">
+                        ${data.priceChangePercentage >= 0 ? '↑' : '↓'} ${Math.abs(data.priceChangePercentage)}% (24h)
+                    </div>
+                `;
+            }
         }
     } catch (error) {
         console.error('Error fetching price data:', error);
